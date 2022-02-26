@@ -47,4 +47,5 @@ It can be turned off using `hasAmbiantLight = {false}` and its args can be chang
 A div element with `id="selector"` is necessary as it locks and unlocks the controls on `esc` press. Also it can act as a welcome/ intital loading screen.
 
 Example Website [vinay-matta-Portfolio](https://vinay-matta.web.app/)
-More Complex apllication(with raycasters to simulate in-game keyboard interaction) [portfolio-github](https://github.com/VinayMatta63/threejs-portfolio)
+
+More Complex application(with raycasters to simulate in-game keyboard interaction) [portfolio-github](https://github.com/VinayMatta63/threejs-portfolio)
