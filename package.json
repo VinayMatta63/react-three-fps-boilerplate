@@ -1,6 +1,6 @@
 {
   "name": "react-three-fps",
-  "version": "0.1.0",
+  "version": "0.1.3",
   "description": "React Three Fiber FPS Controller",
   "keywords": [
     "react",
@@ -9,19 +9,8 @@
     "@react-three/fiber",
     "three"
   ],
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "files": [
-    "dist",
-    "README.md"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/VinayMatta63/react-three-fps.git"
-  },
-  "private": false,
+  "private": true,
   "dependencies": {
-    "@babel/polyfill": "^7.12.1",
     "@react-three/drei": "^8.10.7",
     "@react-three/fiber": "^7.0.26",
     "@testing-library/jest-dom": "^5.16.2",
@@ -30,8 +19,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
-    "three": "^0.138.0",
-    "web-vitals": "^2.1.4"
+    "three": "^0.138.0"
   },
   "scripts": {
     "start": "react-scripts start",

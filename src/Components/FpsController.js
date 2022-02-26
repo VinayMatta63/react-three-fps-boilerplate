@@ -31,7 +31,6 @@ const CameraControls = ({ velocityFactor, bound, cameraInitialPosition }) => {
   let prevTime = 0;
   const velocity = new Vector3();
   const direction = new Vector3();
-
   const onKeyDown = function (event) {
     switch (event.code) {
       case "ArrowUp":
@@ -162,7 +161,7 @@ const CameraControls = ({ velocityFactor, bound, cameraInitialPosition }) => {
   return <PointerLockControls ref={controlsRef} id="#selector" />;
 };
 
-function FpsController({
+const FpsController = ({
   velocityFactor = 12,
   showFloor = true,
   bound = 20,
@@ -175,7 +174,7 @@ function FpsController({
   hasAmbiantLight = true,
   ambientLightArgs = ["white", 10],
   cameraInitialPosition = [0, 5, 0],
-}) {
+}) => {
   return (
     <>
       {hasAmbiantLight && <ambientLight args={ambientLightArgs} />}
@@ -191,6 +190,6 @@ function FpsController({
       />
     </>
   );
-}
+};
 
 export default FpsController;
