@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# Boilerplate for Custom FPS Movement
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a basic setup for fps movement in a react-three app which requires @react-three/fiber, @react-three/drei and three dependencies.  
 
-## Available Scripts
+## Component
+The main component that enables fps movement is FpsController which can be used as:
 
-In the project directory, you can run:
+    <FpsController>
+          velocityFactor={12}
+          showFloor={true}
+          bound={200}
+          floorMaterial={{
+            color: "#80e93d",
+            opacity: 0.8,
+            roughness: 1,
+            metalness: 0,
+          }}
+          hasAmbiantLight={true}
+          ambientLightArgs={["yellow", 10]}
+          cameraInitialPosition={[0, 5, 25]}
+    </FpsController>
 
-### `npm start`
+It has following sub-components.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### `Floor`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This component is used if we require a floor (square-mesh) beneath the camera and takes the `bound` and `floorMaterial` as props.
+where `bound` specifies the distance a player is allowed to move in one direction i.e., half the side of square mesh and `floorMaterial` is an object with attributes color, opacity, metalness and roughness.
 
-### `npm test`
+By default floor is enabled, to disable it pass `showFloor={false}` to the FpsController.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `CameraControls`
 
-### `npm run build`
+This is the main component which sets up a perspective camera controls its movement based on key-down/up events and also provides jump, sprint and fly functionalities.
+It also ensures that the camera remains inside a specified bounding square and if a user try to go out of bound, it brings them back to the center of bounding square / initial camera position.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+It requires `bound`, `velocityFactor` and `cameraInitialPosition` as props where velocityFactor can change the movement speed of camera while cameraInitialPosition can decide the starting position of a new user.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `ambientLight`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+A basic three.js ambient light to see the scene because without any light the mesh-standard material is invisible to the camera.
+It can be turned off using `hasAmbiantLight = {false}` and its args can be changed with `ambientLightArgs = {["color", "intensity"]}`.
 
-### `npm run eject`
+## Others
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### `selector`
+A div element with `id="selector"` is necessary as it locks and unlocks the controls on `esc` press. Also it can act as a welcome/ intital loading screen.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Example Website [vinay-matta-Portfolio](https://vinay-matta.web.app/)
+More Complex apllication(with raycasters to simulate in-game keyboard interaction) [portfolio-github](https://github.com/VinayMatta63/threejs-portfolio)
